@@ -16,14 +16,13 @@ public class GhostMovement : MonoBehaviour
     public Transform plane_forward; // объект, левее которого приведение не должно улетать
     public Transform plane_back; // объект, правее которого приведение не должно улетать
 
-    private Vector2 direction; // направление движения приведения
+    private Vector3 direction; // направление движения приведения
     private float elapsedTime; // прошедшее время
 
     void Start()
     {
         // задаем случайное направление
-        direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        direction.Normalize(); // нормализуем вектор направления
+        direction = RandomVector3();
     }
 
     void Update()
@@ -38,8 +37,7 @@ public class GhostMovement : MonoBehaviour
         if (elapsedTime >= changeDirectionTime)
         {
             // задаем случайное направление
-            direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            direction.Normalize(); // нормализуем вектор направления
+            direction = RandomVector3();
 
             // сбрасываем прошедшее время
             elapsedTime = 0f;
@@ -51,5 +49,13 @@ public class GhostMovement : MonoBehaviour
         float x = Mathf.Clamp(transform.position.x, plane_left.position.x, plane_right.position.x);
         transform.position = new Vector3(x, y, z);
 
+    }
+
+    private Vector3 RandomVector3()
+    {
+        Vector3 direction;
+        direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        direction.Normalize();
+        return direction;
     }
 }
