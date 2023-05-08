@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour
+public class WeaponShoot : MonoBehaviour
 {
-    public Weapon weapon; // ссылка на компонент оружия
+    public int damage = 10; // урон оружия
 
     void Update()
     {
@@ -14,13 +14,14 @@ public class PlayerWeapon : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit))
             {
+                Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red, 10f);
                 Ghost ghost = hit.collider.GetComponent<Ghost>();
                 if (ghost != null)
                 {
-                    weapon.Hit(ghost);
+                    ghost.TakeDamage(damage);
                 }
 
-                Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red, 10f);
+                
 
             }
         }
