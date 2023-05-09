@@ -3646,6 +3646,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6133091235911903017, guid: 0c9d8a88516c1b648bdfb2384e62f206, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6219628775153690411, guid: 0c9d8a88516c1b648bdfb2384e62f206, type: 3}
       propertyPath: m_Name
       value: Slot
