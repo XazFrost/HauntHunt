@@ -4903,7 +4903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 690134976744740503}
   bulletPrefab: {fileID: 2803134433369392802, guid: 32934c44e0cb10646837132e76d89e99, type: 3}
-  bulletForce: 20
+  bulletForce: 30
+  fireRate: 10
 --- !u!4 &1790583238656940990
 Transform:
   m_ObjectHideFlags: 0

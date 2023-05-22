@@ -8,12 +8,17 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
 
     public float bulletForce = 20f;
+    public float fireRate = 10f;
+    private float time;
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        time += Time.deltaTime;
+        float nextTimeToFire = 1 / fireRate;
+        if (Input.GetButton("Fire1") && time > nextTimeToFire)
         {
             Shoot();
+            time = 0;
         }
     }
 
