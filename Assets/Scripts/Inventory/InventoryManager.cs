@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     public List<InventorySlot> slots = new List<InventorySlot>();
     public bool isOpened;
     private Camera mainCamera;
-    public float reachDistance = 3f;
+    public float reachDistance = 20f;
 
     private void Awake()
     {
@@ -48,15 +48,13 @@ public class InventoryManager : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, reachDistance))
             {
-                Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.green);
+                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.GetComponent<Item>() != null)
                 {
                     AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
                     Destroy(hit.collider.gameObject);
+                    Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.green);
                 }
-            }
-            else
-            {
                 Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.blue);
             }
         }
@@ -68,9 +66,13 @@ public class InventoryManager : MonoBehaviour
         {
             if (slot.item == _item)
             {
-                slot.amount += _amount;
-                slot.itemAmountText.text = slot.amount.ToString();
-                return;
+                if (slot.amount + _amount <= _item.maximumAmount)
+                {
+                    slot.amount += _amount;
+                    slot.itemAmountText.text = slot.amount.ToString();
+                    return;
+                }
+                break;
             }
 
         }

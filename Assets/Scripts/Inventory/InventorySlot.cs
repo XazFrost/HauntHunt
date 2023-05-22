@@ -9,14 +9,13 @@ public class InventorySlot : MonoBehaviour
     public ItemScriptableObject item;
     public int amount;
     public bool isEmpty = true;
-
     public GameObject IconGO;
     public TMP_Text itemAmountText;
 
     private void Awake()
     {
-        IconGO = transform.GetChild(0).gameObject;
-        itemAmountText = transform.GetChild(1).GetComponent<TMP_Text>();
+        IconGO = transform.GetChild(0).GetChild(0).gameObject;
+        itemAmountText = transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>();
     }
 
     public void SetIcon(Sprite icon)

@@ -16,6 +16,6 @@ MonoBehaviour:
   itemType: 1
   itemPrefab: {fileID: 7590952709269246023, guid: 38511564e51fc23479593337e4527f8d, type: 3}
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  maximumAmount: 10
+  maximumAmount: 2
   itemDescription: 
   healAmount: 5
