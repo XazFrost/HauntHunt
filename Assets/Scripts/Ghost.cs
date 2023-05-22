@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    public int health = 50; // здоровье приведения
+    public float health = 50; // здоровье приведения
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 

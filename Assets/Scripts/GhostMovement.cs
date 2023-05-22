@@ -54,7 +54,7 @@ public class GhostMovement : MonoBehaviour
     private Vector3 RandomVector3()
     {
         Vector3 direction;
-        direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        direction = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
         direction.Normalize();
         return direction;
     }
