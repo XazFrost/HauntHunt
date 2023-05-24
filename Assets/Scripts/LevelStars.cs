@@ -13,6 +13,11 @@ public class LevelStars : MonoBehaviour
     public int requiredKillsForStar3 = 10;
 
     private int currentKills = 0;
+    private void Start()
+    {
+        currentKills = GameManager.Instance.killCount;
+        UpdateStarVisibility();
+    }
 
     private void UpdateStarVisibility()
     {
@@ -21,9 +26,4 @@ public class LevelStars : MonoBehaviour
         star3.SetActive(currentKills >= requiredKillsForStar3);
     }
 
-    public void IncreaseKillCount()
-    {
-        currentKills++;
-        UpdateStarVisibility();
-    }
 }
