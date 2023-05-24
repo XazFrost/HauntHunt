@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    public float health = 50; // здоровье приведения
+    public float health = 50; // ghost's health
+    private KillCounter killCounter; // reference to the KillCounter script
+
+    private void Start()
+    {
+        // Find the KillCounter component in the scene
+        killCounter = FindObjectOfType<KillCounter>();
+    }
 
     public void TakeDamage(float damage)
     {
@@ -18,7 +25,10 @@ public class Ghost : MonoBehaviour
 
     private void Die()
     {
-        // добавить эффект смерти
+        // Increase the kill count in the KillCounter script
+        killCounter.HandleGhostDeath();
+
+        // add death effect
         Destroy(gameObject);
     }
 }
