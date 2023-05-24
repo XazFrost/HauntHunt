@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour
 
     public GameObject hitEffect;
     public float damage = 5f;
-    void OnCollisionEnter(Collision collision)
+    public float lifetime = 4f;
+    private float time = 0f;
+    void OnTriggerEnter(Collider collider)
     {
-        Ghost ghost = collision.gameObject.GetComponent<Ghost>();
+        Ghost ghost = collider.gameObject.GetComponent<Ghost>();
         if (ghost != null)
         {
             ghost.TakeDamage(damage);
@@ -20,5 +22,14 @@ public class Bullet : MonoBehaviour
         Destroy(effect, 1f);
 
         Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        if (time > lifetime)
+        {
+            Destroy(gameObject);
+        }
+        time += Time.deltaTime;
     }
 }
