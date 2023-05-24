@@ -12,4 +12,11 @@ public class ItemScriptableObject : ScriptableObject
     public Sprite icon;
     public int maximumAmount;
     public string itemDescription;
+
+    [Header("Weapon Stats")]
+    public float damage;
+    public float fireRate;
+    public float range;
+    public float bulletSpeed;
+    public GameObject bulletPrefab;
 }

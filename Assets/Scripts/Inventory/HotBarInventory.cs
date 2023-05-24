@@ -13,6 +13,7 @@ public class HotBarInventory : MonoBehaviour
     public Sprite selectedSprite;
     public Sprite notSelectedSprite;
     //public Text healthText;
+    public InventorySlot activeSlot = null;
 
     // Update is called once per frame
     void Update()
@@ -35,6 +36,7 @@ public class HotBarInventory : MonoBehaviour
             }
             // Берем предыдущий слот и меняем его картинку на "выбранную"
             hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
+            activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
             // Что то делаем с предметом:
 
         }
@@ -54,6 +56,7 @@ public class HotBarInventory : MonoBehaviour
             }
             // Берем предыдущий слот и меняем его картинку на "выбранную"
             hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
+            activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
             // Что то делаем с предметом:
             
         }
@@ -69,10 +72,12 @@ public class HotBarInventory : MonoBehaviour
                     if (hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite == notSelectedSprite)
                     {
                         hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
+                        activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
                     }
                     else
                     {
                         hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = notSelectedSprite;
+                        activeSlot = null;
                     }
                 }
                 // Иначе мы убираем свечение с предыдущего слота и светим слот который мы выбираем
@@ -81,9 +86,11 @@ public class HotBarInventory : MonoBehaviour
                     hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = notSelectedSprite;
                     currentHotBarID = i;
                     hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
+                    activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
                 }
             }
         }
+
         /*
         // Используем предмет по нажатию на левую кнопку мыши
         if (Input.GetKeyDown(KeyCode.Mouse0))

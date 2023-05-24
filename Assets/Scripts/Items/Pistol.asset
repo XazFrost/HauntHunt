@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff8f465d2cec6489c3a1de8bb1f68e, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  itemName: Pistol
+  itemType: 2
+  itemPrefab: {fileID: 3158737120311452617, guid: d25aa254a27096c41acdedf0f45e00f7, type: 3}
+  icon: {fileID: 21300000, guid: 27f95be56693aa8459fe5c4eb98a4caa, type: 3}
+  maximumAmount: 1
+  itemDescription: Oldschool flint pistol
+  damage: 40
+  fireRate: 1
+  range: 0.3
+  bulletSpeed: 50
+  bulletPrefab: {fileID: 2803134433369392802, guid: 32934c44e0cb10646837132e76d89e99, type: 3}
