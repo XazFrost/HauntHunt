@@ -5,11 +5,14 @@ using UnityEngine;
 public class KillCounter : MonoBehaviour
 {
     public int killCounter = 0; // variable to store the kill count
+    private LevelStars levelStars;
 
     private void Start()
     {
         // Initialize the kill count at the start of the game
         killCounter = 0;
+
+        levelStars = FindObjectOfType<LevelStars>();
     }
 
     // Method to increase the kill count
@@ -22,6 +25,9 @@ public class KillCounter : MonoBehaviour
     // Method to handle ghost death
     public void HandleGhostDeath()
     {
+
+        GameManager.Instance.IncreaseKillCount();
+        levelStars.IncreaseKillCount();
         // Increase the kill count
         IncreaseKillCount();
     }
