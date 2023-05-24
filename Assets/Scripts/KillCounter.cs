@@ -10,7 +10,6 @@ public class KillCounter : MonoBehaviour
     {
         // Initialize the kill count at the start of the game
         killCounter = 0;
-
     }
 
     // Method to increase the kill count
@@ -23,7 +22,6 @@ public class KillCounter : MonoBehaviour
     // Method to handle ghost death
     public void HandleGhostDeath()
     {
-
         GameManager.Instance.IncreaseKillCount();
         // Increase the kill count
         IncreaseKillCount();

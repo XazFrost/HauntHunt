@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void PlayPressed()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("First_Level");
     }
 
     public void ExitPressed()
@@ -16,6 +16,11 @@ public class Menu : MonoBehaviour
     }
 
     public void Options(GameObject window)
+    {
+        window.SetActive(true);
+    }
+
+    public void NewGame(GameObject window)
     {
         window.SetActive(true);
     }
