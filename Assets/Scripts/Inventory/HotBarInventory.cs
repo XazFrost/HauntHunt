@@ -16,12 +16,14 @@ public class HotBarInventory : MonoBehaviour
     public Transform itemHandler;
 
     private GameObject itemObject = null;
+    private Transform player;
 
     void Start()
     {
         currentHotBarID = 0;
         hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
         activeSlotUpdate();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -96,6 +98,22 @@ public class HotBarInventory : MonoBehaviour
                     hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
                     activeSlotUpdate();
                 }
+            }
+        }
+
+        // Item Drop
+        if (Input.GetKeyDown(KeyCode.Q) && inventoryManager.isOpened == false && activeSlot != null)
+        {
+            if (activeSlot.item != null)
+            {
+                // Выброс объектов из инвентаря - Спавним префаб обекта перед персонажем
+                GameObject itemObject = Instantiate(activeSlot.item.itemPrefab, itemHandler.position, itemHandler.rotation);
+                // Устанавливаем количество объектов такое какое было в слоте
+                itemObject.GetComponent<Item>().amount = activeSlot.amount;
+                // убираем значения InventorySlot
+                activeSlot.gameObject.GetComponentInChildren<DragAndDropItem>().NullifySlotData();
+                // Обновляем предмет в руках через активный слот
+                activeSlotUpdate();
             }
         }
     }

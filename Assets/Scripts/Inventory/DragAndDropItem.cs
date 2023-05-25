@@ -11,7 +11,7 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     public InventorySlot oldSlot;
     private Transform player;
-    public HotBarInventory hotBarInventory;
+    private HotBarInventory hotBarInventory;
 
     private void Start()
     {
@@ -58,7 +58,9 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (eventData.pointerCurrentRaycast.gameObject.name == "UIPanels")
         {
             // Выброс объектов из инвентаря - Спавним префаб обекта перед персонажем
-            GameObject itemObject = Instantiate(oldSlot.item.itemPrefab, player.position + Vector3.up + player.forward, Quaternion.identity);
+            var itemPos = player.position + Vector3.up + player.forward;
+            var itemRot = Quaternion.Euler(player.eulerAngles.x, player.eulerAngles.y - 90, player.eulerAngles.z);
+            GameObject itemObject = Instantiate(oldSlot.item.itemPrefab, itemPos, itemRot);
             // Устанавливаем количество объектов такое какое было в слоте
             itemObject.GetComponent<Item>().amount = oldSlot.amount;
             // убираем значения InventorySlot
