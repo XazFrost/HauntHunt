@@ -20,6 +20,18 @@ public class InventoryManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
+        // Slots from hot bar
+        Transform hotBarPanel = GameObject.FindGameObjectWithTag("HotBar").transform;
+
+        for (int i = 0; i < hotBarPanel.childCount; i++)
+        {
+            if (hotBarPanel.GetChild(i).GetComponent<InventorySlot>() != null)
+            {
+                slots.Add(hotBarPanel.GetChild(i).GetComponent<InventorySlot>());
+            }
+        }
+
+        // Slots from inventory panel
         for (int i = 0; i < inventoryPanel.childCount; i++)
         {
             if (inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null)
@@ -53,7 +65,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
                     Destroy(hit.collider.gameObject);
-                    Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.green);
+                    GameObject.FindGameObjectWithTag("HotBar").GetComponent<HotBarInventory>().activeSlotUpdate();
                 }
                 Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.blue);
             }
