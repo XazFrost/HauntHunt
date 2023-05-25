@@ -46,11 +46,18 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Inventory opening
+        // Inventory open and close
         if (Input.GetKeyDown(KeyCode.I))
         {
             isOpened = !isOpened;
             UIPanel.SetActive(isOpened ? true : false);
+        }
+
+        // Inventory close on esc
+        if (Input.GetKeyDown(KeyCode.Escape) && isOpened == true)
+        {
+            isOpened = false;
+            UIPanel.SetActive(false);
         }
 
         // Item PickUp
