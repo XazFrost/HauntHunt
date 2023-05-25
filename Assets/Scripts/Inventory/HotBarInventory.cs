@@ -100,7 +100,7 @@ public class HotBarInventory : MonoBehaviour
         }
     }
 
-    void activeSlotUpdate()
+    public void activeSlotUpdate()
     {
         Destroy(itemObject);
 

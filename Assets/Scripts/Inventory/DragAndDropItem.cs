@@ -11,6 +11,7 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     public InventorySlot oldSlot;
     private Transform player;
+    public HotBarInventory hotBarInventory;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Находим скрипт InventorySlot в слоте в иерархии
         oldSlot = transform.GetComponentInParent<InventorySlot>();
+
+        hotBarInventory = GameObject.FindGameObjectWithTag("HotBar").GetComponent<HotBarInventory>();
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -60,11 +63,15 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             itemObject.GetComponent<Item>().amount = oldSlot.amount;
             // убираем значения InventorySlot
             NullifySlotData();
+            // Обновляем предмет в руках через активный слот
+            hotBarInventory.activeSlotUpdate();
         }
         else if(eventData.pointerCurrentRaycast.gameObject.transform.parent.parent.GetComponent<InventorySlot>() != null)
         {
             //Перемещаем данные из одного слота в другой
             ExchangeSlotData(eventData.pointerCurrentRaycast.gameObject.transform.parent.parent.GetComponent<InventorySlot>());
+            // Обновляем предмет в руках через активный слот
+            hotBarInventory.activeSlotUpdate();
         }
        
     }
