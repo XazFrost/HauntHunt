@@ -12,10 +12,18 @@ public class HotBarInventory : MonoBehaviour
     public int currentHotBarID = 0;
     public Sprite selectedSprite;
     public Sprite notSelectedSprite;
-    //public Text healthText;
     public InventorySlot activeSlot = null;
+    public Transform itemHandler;
 
-    // Update is called once per frame
+    private GameObject itemObject = null;
+
+    void Start()
+    {
+        currentHotBarID = 0;
+        hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
+        activeSlotUpdate();
+    }
+
     void Update()
     {
         float mw = Input.GetAxis("Mouse ScrollWheel");
@@ -36,7 +44,7 @@ public class HotBarInventory : MonoBehaviour
             }
             // Берем предыдущий слот и меняем его картинку на "выбранную"
             hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
-            activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
+            activeSlotUpdate();
             // Что то делаем с предметом:
 
         }
@@ -56,7 +64,7 @@ public class HotBarInventory : MonoBehaviour
             }
             // Берем предыдущий слот и меняем его картинку на "выбранную"
             hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
-            activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
+            activeSlotUpdate();
             // Что то делаем с предметом:
             
         }
@@ -72,12 +80,12 @@ public class HotBarInventory : MonoBehaviour
                     if (hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite == notSelectedSprite)
                     {
                         hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
-                        activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
+                        activeSlotUpdate();
                     }
                     else
                     {
                         hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = notSelectedSprite;
-                        activeSlot = null;
+                        activeSlotDisable();
                     }
                 }
                 // Иначе мы убираем свечение с предыдущего слота и светим слот который мы выбираем
@@ -86,50 +94,31 @@ public class HotBarInventory : MonoBehaviour
                     hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = notSelectedSprite;
                     currentHotBarID = i;
                     hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite = selectedSprite;
-                    activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
+                    activeSlotUpdate();
                 }
             }
         }
-
-        /*
-        // Используем предмет по нажатию на левую кнопку мыши
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().item != null)
-            {
-                if (hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().item.isConsumeable && !inventoryManager.isOpened && hotBarParent.GetChild(currentHotBarID).GetComponent<Image>().sprite == selectedSprite)
-                {
-                    // Применяем изменения к здоровью (будущем к голоду и жажде) 
-                    ChangeCharacteristics();
-
-                    if (hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().amount <= 1)
-                    {
-                        hotBarParent.GetChild(currentHotBarID).GetComponentInChildren<DragAndDropItem>().NullifySlotData();
-                    }
-                    else
-                    {
-                        hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().amount--;
-                        hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().itemAmountText.text = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().amount.ToString();
-                    }
-                }
-            }
-        }
-        */
     }
-    /*
-    private void ChangeCharacteristics()
+
+    void activeSlotUpdate()
     {
-        // Если здоровье + добавленное здоровье от предмета меньше или равно 100, то делаем вычисления... 
-        if(int.Parse(healthText.text) + hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().item.changeHealth <= 100)
+        Destroy(itemObject);
+
+        activeSlot = hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>();
+
+        // Item in hand
+        if (activeSlot.item != null)
         {
-            float newHealth = int.Parse(healthText.text) + hotBarParent.GetChild(currentHotBarID).GetComponent<InventorySlot>().item.changeHealth;
-            healthText.text = newHealth.ToString();
-        }
-        // Иначе, просто ставим здоровье на 100
-        else
-        {
-            healthText.text = "100";
+            itemObject = Instantiate(activeSlot.item.itemPrefab, itemHandler.position, itemHandler.rotation);
+            itemObject.transform.SetParent(itemHandler);
+            itemObject.GetComponent<Collider>().enabled = false;
+            itemObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
-    */
+
+    void activeSlotDisable()
+    {
+        activeSlot = null;
+        Destroy(itemObject);
+    }
 }
