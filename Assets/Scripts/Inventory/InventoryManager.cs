@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         // Inventory open and close
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && gameObject.GetComponent<Pause>().isPaused == false)
         {
             isOpened = !isOpened;
             UIPanel.SetActive(isOpened ? true : false);
