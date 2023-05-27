@@ -19,4 +19,7 @@ public class ItemScriptableObject : ScriptableObject
     public float range;
     public float bulletSpeed;
     public GameObject bulletPrefab;
+
+    [Header("Food Stats")]
+    public float heal;
 }
