@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     private float eatTime;
     private float nextTimeToFire = 0;
     public PlayerHealth playerHealth;
+    public ReloadSlider reloadSlider;
 
     void Start()
     {
@@ -22,6 +23,17 @@ public class Shooting : MonoBehaviour
     {
         time += Time.deltaTime;
         eatTime += Time.deltaTime;
+        // Reload slider
+        if (time < nextTimeToFire)
+        {
+            reloadSlider.gameObject.SetActive(true);
+            reloadSlider.SliderUpdate(time, nextTimeToFire);
+        }
+        else
+        {
+            reloadSlider.gameObject.SetActive(false);
+        }
+        // Item usage
         if (Input.GetButton("Fire1") && time >= nextTimeToFire)
         {
             if (inventoryManager.isOpened == false)

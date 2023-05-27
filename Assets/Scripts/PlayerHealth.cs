@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        healthBar.ChangeHealthBar(health);
         healthBar.ChangeMaxHealth(maxHealth);
     }
 
