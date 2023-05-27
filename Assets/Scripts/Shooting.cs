@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shooting : MonoBehaviour
 {
@@ -8,11 +9,19 @@ public class Shooting : MonoBehaviour
     public InventoryManager inventoryManager;
     public HotBarInventory hotBarInventory;
     private float time;
+    private float eatTime;
     private float nextTimeToFire = 0;
+    public PlayerHealth playerHealth;
+
+    void Start()
+    {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+    }
 
     void Update()
     {
         time += Time.deltaTime;
+        eatTime += Time.deltaTime;
         if (Input.GetButton("Fire1") && time >= nextTimeToFire)
         {
             if (inventoryManager.isOpened == false)
@@ -21,11 +30,23 @@ public class Shooting : MonoBehaviour
                 {
                     if (hotBarInventory.activeSlot.item != null)
                     {
-                        var weapon = hotBarInventory.activeSlot.item;
-                        if (weapon.itemType == ItemType.Weapon)
+                        var item = hotBarInventory.activeSlot.item;
+                        if (item.itemType == ItemType.Weapon)
                         {
-                            nextTimeToFire = 1 / weapon.fireRate;
-                            Shoot(weapon.bulletPrefab, weapon.bulletSpeed, weapon.damage, weapon.range);
+                            nextTimeToFire = 1 / item.fireRate;
+                            Shoot(item.bulletPrefab, item.bulletSpeed, item.damage, item.range);
+                        }
+                        else if (item.itemType == ItemType.Food && eatTime > 2f)
+                        {
+                            playerHealth.ChangeHealth(item.heal);
+                            hotBarInventory.activeSlot.amount -= 1;
+                            hotBarInventory.activeSlot.transform.GetChild(0).transform.GetChild(1).GetComponent<TMP_Text>().text = hotBarInventory.activeSlot.amount.ToString();
+                            eatTime = 0;
+                            if (hotBarInventory.activeSlot.amount <= 0)
+                            {
+                                hotBarInventory.activeSlot.gameObject.GetComponentInChildren<DragAndDropItem>().NullifySlotData();
+                                hotBarInventory.activeSlotUpdate();
+                            }
                         }
                     }
                     
