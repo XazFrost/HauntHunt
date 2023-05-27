@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5772292602953859237}
   m_Layer: 0
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3158737120311452617}
-  m_LocalRotation: {x: -0.0000017285345, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.411, y: 0.3649499, z: 2.3619668}
   m_LocalScale: {x: 3.2225738, y: 3.2225738, z: 3.2225738}
   m_ConstrainProportionsScale: 0

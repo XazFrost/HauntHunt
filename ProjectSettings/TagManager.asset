@@ -7,6 +7,7 @@ TagManager:
   - Door
   - Text
   - HotBar
+  - Selectable
   layers:
   - Default
   - TransparentFX

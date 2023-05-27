@@ -2274,7 +2274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 205, y: 61.7391}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1180295303
@@ -4998,7 +4998,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 4297516115448453440}
   slots: []
   isOpened: 0
-  reachDistance: 200
+  pickupRange: 5
 --- !u!114 &4297516115124226427
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class InventoryManager : MonoBehaviour
     public List<InventorySlot> slots = new List<InventorySlot>();
     public bool isOpened;
     private Camera mainCamera;
-    public float reachDistance = 20f;
+    private float reachDistance = 20f;
+    public float pickupRange = 5f;
+    private GameObject player;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // Slots from hot bar
         Transform hotBarPanel = GameObject.FindGameObjectWithTag("HotBar").transform;
@@ -70,9 +73,14 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.GetComponent<Item>() != null)
                 {
-                    AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
-                    Destroy(hit.collider.gameObject);
-                    GameObject.FindGameObjectWithTag("HotBar").GetComponent<HotBarInventory>().activeSlotUpdate();
+                    var range = Vector3.Distance(hit.collider.gameObject.transform.position, player.transform.position);
+                    Debug.Log(range);
+                    if (range <= pickupRange)
+                    {
+                        AddItem(hit.collider.gameObject.GetComponent<Item>().item, hit.collider.gameObject.GetComponent<Item>().amount);
+                        Destroy(hit.collider.gameObject);
+                        GameObject.FindGameObjectWithTag("HotBar").GetComponent<HotBarInventory>().activeSlotUpdate();
+                    }
                 }
                 Debug.DrawRay(ray.origin, ray.direction*reachDistance, Color.blue);
             }
