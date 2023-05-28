@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     private float time;
     private float eatTime;
     private float nextTimeToFire = 0;
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public ReloadSlider reloadSlider;
 
     void Start()

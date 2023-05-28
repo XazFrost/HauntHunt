@@ -8,12 +8,15 @@ public class PlayerHealth : MonoBehaviour
     public float health = 100f;
     public float maxHealth = 100f;
 
-    public HealthBar healthBar;
+    public HealthBar _healthBar;
 
     void Start()
     {
-        healthBar.ChangeHealthBar(health);
-        healthBar.ChangeMaxHealth(maxHealth);
+        if (_healthBar != null)
+        {
+            _healthBar.ChangeHealthBar(health);
+            _healthBar.ChangeMaxHealth(maxHealth);
+        }
     }
 
     public void SetHealth(float _health)
@@ -31,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
     void UpdateHealth()
     {
         health = Mathf.Clamp(health, 0f, maxHealth);
-        healthBar.ChangeHealthBar(health);
+        _healthBar.ChangeHealthBar(health);
         if (health <= 0)
         {
             Death();
