@@ -1811,6 +1811,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9aabdb89511546649992db464a1ed8fe, type: 3}
+--- !u!114 &55769465 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 640447255292721298, guid: d480b9f803a200f47a51e277966d3c17, type: 3}
+  m_PrefabInstance: {fileID: 118444333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4583506048862f43addbdc83697368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &58870759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
@@ -36106,6 +36117,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 312139064}
     m_Modifications:
+    - target: {fileID: -610509916684860355, guid: a3e3d05099251b9408e607c0adfe5d87, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1201499626071099117, guid: a3e3d05099251b9408e607c0adfe5d87, type: 3}
       propertyPath: m_Name
       value: Traphome_Mid
@@ -41880,7 +41895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4424326145804476218, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.001
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 4424326145804476218, guid: f1743b005e7bf2445ac2f4cd4c2f6279, type: 3}
       propertyPath: m_LocalRotation.w
@@ -41931,9 +41946,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 700
   moveSpeed: 10
-  leftLimit: -5
-  rightLimit: 5
+  leftLimit: -3.5
+  rightLimit: 3.5
   pauseDuration: 2
+--- !u!114 &1182469799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109426990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ad3b77725550044a2b02d58cfb5900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
+  vignette: {fileID: 55769465}
 --- !u!1 &1186800889
 GameObject:
   m_ObjectHideFlags: 0

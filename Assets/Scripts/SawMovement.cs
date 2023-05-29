@@ -6,8 +6,8 @@ public class SawMovement : MonoBehaviour
 {
     public float rotationSpeed = 100f; // Скорость вращения объекта
     public float moveSpeed = 1f; // Скорость перемещения объекта вперед-назад
-    public float leftLimit = -5f; // Левая крайняя точка по оси Z
-    public float rightLimit = 5f; // Правая крайняя точка по оси Z
+    public float leftLimit = -2f; // Левая крайняя точка по оси Z
+    public float rightLimit = 2f; // Правая крайняя точка по оси Z
     public float pauseDuration = 2f; // Длительность задержки в секундах
 
     private float currentSpeed; // Текущая скорость перемещения
@@ -18,6 +18,8 @@ public class SawMovement : MonoBehaviour
     {
         currentSpeed = moveSpeed; // Изначально установим текущую скорость перемещения
         currentZ = transform.position.z; // Запоминаем начальную позицию по оси Z
+        rightLimit += currentZ;
+        leftLimit += currentZ;
     }
 
     private void Update()
