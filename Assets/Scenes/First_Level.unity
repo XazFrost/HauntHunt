@@ -25494,6 +25494,10 @@ PrefabInstance:
       propertyPath: m_DrawHalo
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1456321986, guid: d80749f101a077e4295667a5bdf7be2a, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 122635426595533589, guid: d80749f101a077e4295667a5bdf7be2a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -25554,6 +25558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3265273751871866003, guid: d80749f101a077e4295667a5bdf7be2a, type: 3}
+      propertyPath: shot
+      value: 
+      objectReference: {fileID: 8300000, guid: 34bb1bb9561e99e4d98885e1ac4a7359, type: 3}
+    - target: {fileID: 3265273751871866003, guid: d80749f101a077e4295667a5bdf7be2a, type: 3}
+      propertyPath: reload
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c4016986bc282d49a751d9f29dcc752, type: 3}
     - target: {fileID: 3265273751871866003, guid: d80749f101a077e4295667a5bdf7be2a, type: 3}
       propertyPath: hotBarInventory
       value: 

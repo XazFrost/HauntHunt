@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class Shooting : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class Shooting : MonoBehaviour
     private float nextTimeToFire = 0;
     private PlayerHealth playerHealth;
     public ReloadSlider reloadSlider;
-
+    private AudioSource au;
+    public AudioClip shot, reload;
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        au = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +50,9 @@ public class Shooting : MonoBehaviour
                         {
                             nextTimeToFire = 1 / item.fireRate;
                             Shoot(item.bulletPrefab, item.bulletSpeed, item.damage, item.range);
+                            au.PlayOneShot(shot);
+                            au.clip = reload;
+                            au.PlayDelayed(nextTimeToFire - reload.length);
                         }
                         else if (item.itemType == ItemType.Food && eatTime > 2f)
                         {

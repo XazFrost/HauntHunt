@@ -514,6 +514,8 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   hotBarInventory: {fileID: 0}
   reloadSlider: {fileID: 206508810065851102}
+  shot: {fileID: 8300000, guid: 34bb1bb9561e99e4d98885e1ac4a7359, type: 3}
+  reload: {fileID: 8300000, guid: 0c4016986bc282d49a751d9f29dcc752, type: 3}
 --- !u!114 &1790583238187076105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,12 +556,12 @@ AudioSource:
   m_GameObject: {fileID: 3265273751871866001}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4581582948018921965, guid: 71a2a02e3289bd84f901f06cca069413, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3974f9f700346eb42be508a0ad23f66a, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.2
+  OutputAudioMixerGroup: {fileID: 5129416259203061811, guid: 71a2a02e3289bd84f901f06cca069413, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 34bb1bb9561e99e4d98885e1ac4a7359, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
