@@ -21,8 +21,6 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
         _param1value = _descriptionPanel.transform.Find("Param1Value").GetComponent<TMP_Text>();
         _param2value = _descriptionPanel.transform.Find("Param2Value").GetComponent<TMP_Text>();
 
-        Debug.Log(gameObject.name);
-
         ClearDescription();
     }
     public void OnPointerEnter(PointerEventData eventData)
