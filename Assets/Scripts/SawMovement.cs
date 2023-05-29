@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SawMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SawMovement : MonoBehaviour
     private float currentSpeed; // Текущая скорость перемещения
     private float currentZ; // Текущая позиция по оси Z
     private bool isMovingRight = true; // Флаг, указывающий направление движения
+    private AudioSource au;
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class SawMovement : MonoBehaviour
         currentZ = transform.position.z; // Запоминаем начальную позицию по оси Z
         rightLimit += currentZ;
         leftLimit += currentZ;
+        au = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -61,5 +64,6 @@ public class SawMovement : MonoBehaviour
         yield return new WaitForSeconds(pauseDuration);
         // Восстанавливаем текущую скорость перемещения
         currentSpeed = moveSpeed;
+        au.Play();
     }
 }
