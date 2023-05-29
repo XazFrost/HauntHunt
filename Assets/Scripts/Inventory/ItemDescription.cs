@@ -10,7 +10,7 @@ public class ItemDescription : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private GameObject _descriptionPanel;
     private Image _img;
     private TMP_Text _name, _desc, _param1name, _param2name, _param1value, _param2value;
-    void Start()
+    void Awake()
     {
         _descriptionPanel = GameObject.FindGameObjectWithTag("ItemDescription");
         _img = _descriptionPanel.transform.Find("ItemIconImage").GetComponent<Image>();
