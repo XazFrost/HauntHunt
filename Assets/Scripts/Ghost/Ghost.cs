@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Ghost : MonoBehaviour
 {
     public float health = 50; // ghost's health
     private KillCounter killCounter; // reference to the KillCounter script
+    public AudioClip ghostHit;
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class Ghost : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        GetComponent<AudioSource>().PlayOneShot(ghostHit);
 
         if (health <= 0)
         {

@@ -531,6 +531,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   _healthBar: {fileID: 0}
+  playerHit: {fileID: 8300000, guid: c8f7200a568a53f4cac1147b9e076dd1, type: 3}
 --- !u!114 &8786240225406269194
 MonoBehaviour:
   m_ObjectHideFlags: 0

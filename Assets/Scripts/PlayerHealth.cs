@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
 
     public HealthBar _healthBar;
+    public AudioClip playerHit;
 
     void Start()
     {
@@ -28,6 +30,10 @@ public class PlayerHealth : MonoBehaviour
     public void ChangeHealth(float _health)
     {
         health += _health;
+        if (_health < 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(playerHit);
+        }
         UpdateHealth();
     }
 
