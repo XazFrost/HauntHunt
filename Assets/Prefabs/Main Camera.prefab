@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothTime: 0.1
-  camOffset: {x: 0, y: 9, z: -1}
+  camOffset: {x: 0, y: 9, z: -3}
 --- !u!114 &1169315863022806933
 MonoBehaviour:
   m_ObjectHideFlags: 0

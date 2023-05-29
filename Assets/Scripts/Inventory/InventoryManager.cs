@@ -43,6 +43,11 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
+        foreach (InventorySlot slot in slots)
+        {
+            slot.transform.GetChild(0).GetComponent<ItemDescription>().DescInitiate();
+        }
+        
         UIPanel.SetActive(false);
     }
 

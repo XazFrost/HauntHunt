@@ -9,6 +9,7 @@ TagManager:
   - HotBar
   - Selectable
   - ItemDescription
+  - InteractiveCollider
   layers:
   - Default
   - TransparentFX

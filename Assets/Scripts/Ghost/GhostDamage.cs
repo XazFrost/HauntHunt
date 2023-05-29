@@ -5,7 +5,12 @@ using UnityEngine;
 public class GhostDamage : MonoBehaviour
 {
     public float damage = 10f;
-    public HitVignette vignette;
+    private HitVignette vignette;
+
+    void Start()
+    {
+        vignette = Camera.main.GetComponentInChildren<HitVignette>();
+    }
 
     void OnCollisionEnter(Collision col)
     {

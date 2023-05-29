@@ -17,6 +17,10 @@ public class Bullet : MonoBehaviour
             ghost.TakeDamage(damage);
         }
 
+        if (collider.CompareTag("InteractiveCollider"))
+        {
+            return;
+        }
         // Hit Effect
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1f);
